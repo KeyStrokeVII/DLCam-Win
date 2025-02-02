@@ -116,7 +116,7 @@ This is more likely to work on your computer but will be slower as it utilizes t
 **2. Clone the Repository**
 
 ```bash
-https://github.com/hacksider/Deep-Live-Cam.git
+https://github.com/KeyStrokeVII/DLCam-Win.git
 ```
 
 **3. Download the Models**
@@ -134,13 +134,7 @@ We highly recommend using a `venv` to avoid issues.
 pip install -r requirements.txt
 ```
 
-**For macOS:** Install or upgrade the `python-tk` package:
-
-```bash
-brew install python-tk@3.10
-```
-
-**Run:** If you don't have a GPU, you can run Deep-Live-Cam using `python run.py`. Note that initial execution will download models (~300MB).
+**Run:** If you don't have a GPU, you can run DLCam-Win using `python run.py`. Note that initial execution will download models (~300MB).
 
 ### GPU Acceleration
 
@@ -158,36 +152,6 @@ pip install onnxruntime-gpu==1.16.3
 
 ```bash
 python run.py --execution-provider cuda
-```
-
-**CoreML Execution Provider (Apple Silicon)**
-
-1. Install dependencies:
-
-```bash
-pip uninstall onnxruntime onnxruntime-silicon
-pip install onnxruntime-silicon==1.13.1
-```
-
-2. Usage:
-
-```bash
-python run.py --execution-provider coreml
-```
-
-**CoreML Execution Provider (Apple Legacy)**
-
-1. Install dependencies:
-
-```bash
-pip uninstall onnxruntime onnxruntime-coreml
-pip install onnxruntime-coreml==1.13.1
-```
-
-2. Usage:
-
-```bash
-python run.py --execution-provider coreml
 ```
 
 **DirectML Execution Provider (Windows)**
