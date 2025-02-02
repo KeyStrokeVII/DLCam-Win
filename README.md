@@ -14,127 +14,179 @@
 2. Select which camera to use
 3. Press live!
 
-##  Disclaimer
-
-This deepfake software is designed to be a productive tool for the AI-generated media industry. It can assist artists in animating custom characters, creating engaging content, and even using models for clothing design.
-
-We are aware of the potential for unethical applications and are committed to preventative measures. A built-in check prevents the program from processing inappropriate media (nudity, graphic content, sensitive material like war footage, etc.). We will continue to develop this project responsibly, adhering to the law and ethics. We may shut down the project or add watermarks if legally required.
-
-- Ethical Use: Users are expected to use this software responsibly and legally. If using a real person's face, obtain their consent and clearly label any output as a deepfake when sharing online.
-
-- Content Restrictions: The software includes built-in checks to prevent processing inappropriate media, such as nudity, graphic content, or sensitive material.
-
-- Legal Compliance: We adhere to all relevant laws and ethical guidelines. If legally required, we may shut down the project or add watermarks to the output.
-
-- User Responsibility: We are not responsible for end-user actions. Users must ensure their use of the software aligns with ethical standards and legal requirements.
-
-By using this software, you agree to these terms and commit to using it in a manner that respects the rights and dignity of others.
-
-Users are expected to use this software responsibly and legally. If using a real person's face, obtain their consent and clearly label any output as a deepfake when sharing online. We are not responsible for end-user actions.
-
 
 ---
 
-# Manual Installation for Windows with GPU ONLY!!!
+# Manual Installation for Windows (GPU Support Only)
 
 ---
 
+**Note:** These instructions are for advanced users. If unsure, consider downloading the [prebuilt version](https://hacksider.gumroad.com/l/vccdmm) for easier setup.
 
-Please be aware that the installation requires technical skills and is not for beginners. Consider downloading the [prebuilt](https://hacksider.gumroad.com/l/vccdmm) version.
+## Prerequisites
 
-## Installation
+Ensure the following are installed on your system:
 
-This setup is specifically for systems with a GPU and will utilize GPU acceleration.
+- **Anaconda or Miniconda**: Used for creating isolated Python environments, which helps manage dependencies and avoid conflicts.
+- **pip**: Python's package manager, necessary for installing additional Python packages.
+- **git**: A version control system for cloning and managing repositories.
+- **ffmpeg**: A multimedia framework needed for handling video processing.
+- **Visual Studio 2022 Runtimes**: Provides necessary libraries for running applications on Windows.
+- **Nvidia CUDA 12.1.1 & cuDNN 8.9.7**: Required for GPU acceleration, enabling faster computation.
 
-### 1. Set up Your Platform
+## Installation Instructions
 
-- Python (3.10 recommended)
-- Anaconda or Miniconda
-- pip
-- git
-- ffmpeg - `iex (irm ffmpeg.tc.ht)`
-- Visual Studio 2022 Runtimes (Windows)
+*This setup is optimized for systems with a GPU.*
 
-### 2. Create and Activate Conda Environment
+### Step 1: Create and Activate a Conda Environment
+
+1. Open the Anaconda prompt. This is a command-line interface for managing Conda environments.
+2. Run the following commands to create and activate a new environment:
 
 ```bash
-conda create --name your_env_name python=3.10
-conda activate your_env_name
+conda create -n dlcam-win python=3.10
+conda activate dlcam-win
 ```
 
-### 3. Clone the Repository
+### Step 2: Clone the Repository
+
+Use Git to clone the project repository to your local machine:
 
 ```bash
 git clone https://github.com/KeyStrokeVII/DLCam-Win.git
 cd DLCam-Win
 ```
 
-### 4. Download the Models
+### **Step 3: Download the Required Models**
 
-- GFPGANv1.4
-- inswapper_128_fp16.onnx
+1. Download these pre-trained models, which are essential for the application's functionality:
+    
+    - [GFPGANv1.4](https://huggingface.co/hacksider/deep-live-cam/resolve/main/GFPGANv1.4.pth)
+    - [inswapper_128_fp16.onnx](https://huggingface.co/hacksider/deep-live-cam/resolve/main/inswapper_128_fp16.onnx)
 
-Place these files in the "models" folder.
+3. Move the downloaded files to the `models` folder in the `DLCam-Win` directory. This ensures the application can access them during execution.
 
-### 5. Install Dependencies
+### **Step 4: Install Project Dependencies**
 
-```bash
-pip install -r requirements.txt
-```
+1. Install the necessary Python libraries specified in the requirements.txt file:
 
-## GPU Acceleration
+    ```bash
+   pip install -r requirements.txt
+   ```
 
-### CUDA Execution Provider (Nvidia)
+## Enable GPU Acceleration (CUDA)
 
-- **Install For CUDA Toolkit 12.1.1**
-- Install dependencies:
+*Utilize your NVIDIA GPU to speed up processing.*
 
-```bash
-pip uninstall onnxruntime onnxruntime-gpu
-pip install onnxruntime-gpu==1.16.3
-```
+### **CUDA Execution Provider Setup (Nvidia GPUs)**
 
-- **Usage:**
+1. **Install CUDA Toolkit 12.1.1**: Download and install CUDA Toolkit version 12.1.1 from the NVIDIA website if you have not.  This toolkit is essential for enabling GPU computation.
 
-```bash
-python run.py --execution-provider cuda
-```
+2. **Install ONNX Runtime with GPU Support**:
 
-## To run the application using a batch file, follow these steps
+   ```bash
+   pip uninstall onnxruntime onnxruntime-gpu
+   pip install onnxruntime-gpu==1.16.3
+   ```
 
-### Prerequisites
+3. **Run with CUDA**:
 
- **Add Conda to PATH**: Add the `condabin` directory from your Conda installation to your system's PATH environment variable. Typically, it looks like `C:\Users\<YourUsername>\miniconda3\condabin`.
+   ```bash
+   python run.py --execution-provider cuda
+   ```
 
-### Batch File Setup
+*The --execution-provider cuda flag ensures the application uses the NVIDIA GPU for processing.*
 
-Edit a batch file (`run-cuda.bat`) with the following content:
+## Running the Application Using a Batch File (Convenient Method)
 
-```batch
-@echo off
-REM Use the full path to activate Conda
-call C:\Users\<YourUsername>\miniconda3\condabin\conda.bat activate your_env_name
+*Create a batch file for easier execution*
 
-REM Run the Python script with CUDA
-python run.py --execution-provider cuda
+### **Prerequisites for Batch File**
 
-REM Pause to keep the window open
-pause
-```
+- **Add Conda to PATH Environment Variable**: Include the `condabin` directory in your system's PATH. This allows you to use `conda` commands directly in the Command Prompt. Typically found at `C:\Users\<YourUsername>\miniconda3\condabin`. (adjust the path based on your actual installation location).
 
-### Instructions
+### **Batch File Setup**
 
-1. **Replace `<YourUsername>`**: Substitute with your actual Windows username.
-2. **Replace `your_env_name`**: Substitute with the name of your Conda environment.
-3. **Verify Execution Provider**: Ensure `cuda` is a valid option for the `--execution-provider` argument in `run.py`.
+1. **Modify `run-cuda.bat`** in the `DLCam-Win` directory.
 
-### Troubleshooting
+    ```batch
+    @echo off
+    REM Use the full path to activate Conda
+    call C:\Users\<YourUsername>\miniconda3\condabin\conda.bat activate your_env_name
 
-- If you encounter errors related to the execution provider, check the script's documentation for valid options.
+    REM Run the Python script with CUDA
+    python run.py --execution-provider cuda
+
+    REM Pause to keep the window open after execution
+    pause
+    ```
+
+### **Instructions for `run-cuda.bat`**
+
+- **Replace `<YourUsername>`**: Use your actual Windows username to ensure the batch file can find your Conda installation.
+- **Verify Execution Provider**: Ensure `cuda` is a valid option in `run.py` to enable GPU acceleration.
+- **Run the Batch File**: Double-click `run-cuda.bat` to execute. This will open a command prompt, activate the Conda environment, and run the application with CUDA support.
+
+## Updating the Application
+
+*Keep your application up-to-date with the latest changes.*
+
+### **Adding the Upstream Repository (One-Time Setup)**
+
+1. **Navigate to Local Repository**: Open your Command Prompt or Anaconda Prompt and navigate to your cloned `DLCam-Win` project directory:
+
+    ```bash
+    cd path/to/your/repository
+    ```
+    Replace `path/to/your/repository` with the actual path to where you cloned the `DLCam-Win` repository.
+
+2. **Add Upstream Remote**: Add the original project repository as a remote named "upstream":
+
+    ```bash
+    git remote add upstream https://github.com/hacksider/Deep-Live-Cam.git
+    ```
+    This command adds a remote connection named "upstream" that points to the official repository.
+
+### **Batch File for Updating (`update.bat`)**
+
+1. **Modify `update.bat`** in the `DLCam-Win` directory.
+
+    ```batch
+    @echo off
+    REM Navigate to the local Git repository
+    cd path\to\your\repository
+    REM Replace with your actual repository path!
+    cd DLCam-Win
+
+    REM Fetch updates from the upstream repository
+    git fetch upstream
+
+    REM Switch to the main branch
+    git checkout main
+
+    REM Merge changes from the upstream's main branch into the local main branch
+    git merge upstream/main
+
+    REM Push the merged changes to your origin repository (optional, only if you have your own fork and want to update it)
+    git push origin main
+
+    REM Pause to keep the command prompt open after execution
+    pause
+    ```
+
+### **Instructions for `update.bat`**
+
+- **Enter Repository Path**: **Crucially, you must edit the second line** `cd path\to\your\repository` in the `update.bat` file and replace `path\to\your\repository` with the **actual full path** to your `DLCam-Win` project directory on your system.  For example, if you cloned it to `C:\Users\YourUsername\Documents\DLCam-Win`, the line should be `cd C:\Users\YourUsername\Documents\DLCam-Win`.
+- **Ensure Upstream is Set**: Make sure you have successfully run the "Adding the Upstream Repository" steps *once* before using `update.bat` for the first time.
+- **Run `update.bat`**:  Whenever you want to update your local application to the latest version, simply double-click the `update.bat` file. This will:
+    - Navigate to your project directory.
+    - Fetch the latest changes from the official "upstream" repository.
+    - Switch to the `main` branch of your local repository.
+    - Merge the fetched updates from the upstream `main` branch into your local `main` branch.
+    - (Optionally) Push these merged changes to your own remote repository (if you have forked the project on GitHub).
+    - Pause the command prompt so you can review the output of the update process.
 
 ---
-
-Let me know if you need further adjustments!
 
 ## Credits
 
@@ -165,5 +217,4 @@ Let me know if you need further adjustments!
    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=hacksider/deep-live-cam&type=Date" />
  </picture>
 </a>
-
-
+```
