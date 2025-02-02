@@ -33,156 +33,111 @@ By using this software, you agree to these terms and commit to using it in a man
 Users are expected to use this software responsibly and legally. If using a real person's face, obtain their consent and clearly label any output as a deepfake when sharing online. We are not responsible for end-user actions.
 
 
-## Maual Installation (Windows)
+---
 
+Certainly! Here's the updated section without that part:
 
-**Please be aware that the installation requires technical skills and is not for beginners. Consider downloading the prebuilt version.**
+---
 
-### Installation
+# Manual Installation for Windows with GPU ONLY!!!
 
-This is more likely to work on your computer but will be slower as it utilizes the CPU.
+Please be aware that the installation requires technical skills and is not for beginners. Consider downloading the prebuilt version.
 
-**1. Set up Your Platform**
+## Installation
 
--   Python (3.10 recommended)
--   pip
--   git
--   [ffmpeg](https://www.youtube.com/watch?v=OlNWCpFdVMA) - ```iex (irm ffmpeg.tc.ht)```
--   [Visual Studio 2022 Runtimes (Windows)](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+This setup is specifically for systems with a GPU and will utilize GPU acceleration.
 
-**2. Clone the Repository**
+### 1. Set up Your Platform
+
+- Python (3.10 recommended)
+- Anaconda or Miniconda
+- pip
+- git
+- ffmpeg - `iex (irm ffmpeg.tc.ht)`
+- Visual Studio 2022 Runtimes (Windows)
+
+### 2. Create and Activate Conda Environment
 
 ```bash
-https://github.com/KeyStrokeVII/DLCam-Win.git
+conda create --name your_env_name python=3.10
+conda activate your_env_name
 ```
 
-**3. Download the Models**
+### 3. Clone the Repository
 
-1. [GFPGANv1.4](https://huggingface.co/hacksider/deep-live-cam/resolve/main/GFPGANv1.4.pth)
-2. [inswapper\_128\_fp16.onnx](https://huggingface.co/hacksider/deep-live-cam/resolve/main/inswapper_128_fp16.onnx)
+```bash
+git clone https://github.com/KeyStrokeVII/DLCam-Win.git
+cd DLCam-Win
+```
 
-Place these files in the "**models**" folder.
+### 4. Download the Models
 
-**4. Install Dependencies**
+- GFPGANv1.4
+- inswapper_128_fp16.onnx
 
-We highly recommend using a `venv` to avoid issues.
+Place these files in the "models" folder.
+
+### 5. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-**Run:** If you don't have a GPU, you can run DLCam-Win using `python run.py`. Note that initial execution will download models (~300MB).
+## GPU Acceleration
 
-### GPU Acceleration
+### CUDA Execution Provider (Nvidia)
 
-**CUDA Execution Provider (Nvidia)**
-
-1. Install For [CUDA Toolkit 12.1.1](https://developer.nvidia.com/cuda-12-1-1-download-archive)
-2. Install dependencies:
+- **Install For CUDA Toolkit 12.1.1**
+- Install dependencies:
 
 ```bash
 pip uninstall onnxruntime onnxruntime-gpu
 pip install onnxruntime-gpu==1.16.3
 ```
 
-3. Usage:
+- **Usage:**
 
 ```bash
 python run.py --execution-provider cuda
 ```
 
+## Running the Application with Conda
 
+To run the application using a batch file, follow these steps:
 
+### Prerequisites
 
-## Features & Uses - Everything is real-time
+ **Add Conda to PATH**: Add the `condabin` directory from your Conda installation to your system's PATH environment variable. Typically, it looks like `C:\Users\<YourUsername>\miniconda3\condabin`.
 
-### Mouth Mask
+### Batch File Setup
 
-**Retain your original mouth for accurate movement using Mouth Mask**
+Edit a batch file (e.g., `run-cuda.bat`) with the following content:
 
-<p align="center">
-  <img src="media/ludwig.gif" alt="resizable-gif">
-</p>
+```batch
+@echo off
+REM Use the full path to activate Conda
+call C:\Users\<YourUsername>\miniconda3\condabin\conda.bat activate your_env_name
 
-### Face Mapping
+REM Run the Python script with CUDA
+python run.py --execution-provider cuda
 
-**Use different faces on multiple subjects simultaneously**
-
-<p align="center">
-  <img src="media/streamers.gif" alt="face_mapping_source">
-</p>
-
-### Your Movie, Your Face
-
-**Watch movies with any face in real-time**
-
-<p align="center">
-  <img src="media/movie.gif" alt="movie">
-</p>
-
-### Live Show
-
-**Run Live shows and performances**
-
-<p align="center">
-  <img src="media/live_show.gif" alt="show">
-</p>
-
-### Memes
-
-**Create Your most viral meme yet**
-
-<p align="center">
-  <img src="media/meme.gif" alt="show" width="450"> 
-  <br>
-  <sub>Created using Many Faces feature in Deep-Live-Cam</sub>
-</p>
-
-
-
-## Command Line Arguments (Unmaintained)
-
-```
-options:
-  -h, --help                                               show this help message and exit
-  -s SOURCE_PATH, --source SOURCE_PATH                     select a source image
-  -t TARGET_PATH, --target TARGET_PATH                     select a target image or video
-  -o OUTPUT_PATH, --output OUTPUT_PATH                     select output file or directory
-  --frame-processor FRAME_PROCESSOR [FRAME_PROCESSOR ...]  frame processors (choices: face_swapper, face_enhancer, ...)
-  --keep-fps                                               keep original fps
-  --keep-audio                                             keep original audio
-  --keep-frames                                            keep temporary frames
-  --many-faces                                             process every face
-  --map-faces                                              map source target faces
-  --mouth-mask                                             mask the mouth region
-  --video-encoder {libx264,libx265,libvpx-vp9}             adjust output video encoder
-  --video-quality [0-51]                                   adjust output video quality
-  --live-mirror                                            the live camera display as you see it in the front-facing camera frame
-  --live-resizable                                         the live camera frame is resizable
-  --max-memory MAX_MEMORY                                  maximum amount of RAM in GB
-  --execution-provider {cpu} [{cpu} ...]                   available execution provider (choices: cpu, ...)
-  --execution-threads EXECUTION_THREADS                    number of execution threads
-  -v, --version                                            show program's version number and exit
+REM Pause to keep the window open
+pause
 ```
 
-Looking for a CLI mode? Using the -s/--source argument will make the run program in cli mode.
+### Instructions
 
-## Press
+1. **Replace `<YourUsername>`**: Substitute with your actual Windows username.
+2. **Replace `your_env_name`**: Substitute with the name of your Conda environment.
+3. **Verify Execution Provider**: Ensure `cuda` is a valid option for the `--execution-provider` argument in `run.py`.
 
-**We are always open to criticism and are ready to improve, that's why we didn't cherry-pick anything.**
+### Troubleshooting
 
- - [*"Deep-Live-Cam goes viral, allowing anyone to become a digital doppelganger"*](https://arstechnica.com/information-technology/2024/08/new-ai-tool-enables-real-time-face-swapping-on-webcams-raising-fraud-concerns/) - Ars Technica
- - [*"Thanks Deep Live Cam, shapeshifters are among us now"*](https://dataconomy.com/2024/08/15/what-is-deep-live-cam-github-deepfake/) - Dataconomy
- - [*"This free AI tool lets you become anyone during video-calls"*](https://www.newsbytesapp.com/news/science/deep-live-cam-ai-impersonation-tool-goes-viral/story) - NewsBytes
- - [*"OK, this viral AI live stream software is truly terrifying"*](https://www.creativebloq.com/ai/ok-this-viral-ai-live-stream-software-is-truly-terrifying) - Creative Bloq
- - [*"Deepfake AI Tool Lets You Become Anyone in a Video Call With Single Photo"*](https://petapixel.com/2024/08/14/deep-live-cam-deepfake-ai-tool-lets-you-become-anyone-in-a-video-call-with-single-photo-mark-zuckerberg-jd-vance-elon-musk/) - PetaPixel
- - [*"Deep-Live-Cam Uses AI to Transform Your Face in Real-Time, Celebrities Included"*](https://www.techeblog.com/deep-live-cam-ai-transform-face/) - TechEBlog
- - [*"An AI tool that "makes you look like anyone" during a video call is going viral online"*](https://telegrafi.com/en/a-tool-that-makes-you-look-like-anyone-during-a-video-call-is-going-viral-on-the-Internet/) - Telegrafi
- - [*"This Deepfake Tool Turning Images Into Livestreams is Topping the GitHub Charts"*](https://decrypt.co/244565/this-deepfake-tool-turning-images-into-livestreams-is-topping-the-github-charts) - Emerge
- - [*"New Real-Time Face-Swapping AI Allows Anyone to Mimic Famous Faces"*](https://www.digitalmusicnews.com/2024/08/15/face-swapping-ai-real-time-mimic/) - Digital Music News
- - [*"This real-time webcam deepfake tool raises alarms about the future of identity theft"*](https://www.diyphotography.net/this-real-time-webcam-deepfake-tool-raises-alarms-about-the-future-of-identity-theft/) - DIYPhotography
- - [*"That's Crazy, Oh God. That's Fucking Freaky Dude... That's So Wild Dude"*](https://www.youtube.com/watch?time_continue=1074&v=py4Tc-Y8BcY) - SomeOrdinaryGamers
- - [*"Alright look look look, now look chat, we can do any face we want to look like chat"*](https://www.youtube.com/live/mFsCe7AIxq8?feature=shared&t=2686) - IShowSpeed
+- If you encounter errors related to the execution provider, check the script's documentation for valid options.
+
+---
+
+Let me know if you need further adjustments!
 
 ## Credits
 
