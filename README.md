@@ -1,4 +1,4 @@
-<h1 align="center">Deep-Live-Cam</h1>
+<h1 align="center">Deep-Live-Cam-Windows</h1>
 
 <p align="center">
   Real-time face swap and video deepfake with a single click and only a single image.
@@ -8,9 +8,11 @@
 <a href="https://trendshift.io/repositories/11395" target="_blank"><img src="https://trendshift.io/api/badge/repositories/11395" alt="hacksider%2FDeep-Live-Cam | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </p>
 
-<p align="center">
-  <img src="media/demo.gif" alt="Demo GIF" width="800">
-</p>
+## Live Deepfake in just 3 Clicks
+![easysteps](https://github.com/user-attachments/assets/af825228-852c-411b-b787-ffd9aac72fc6)
+1. Select a face
+2. Select which camera to use
+3. Press live!
 
 ##  Disclaimer
 
@@ -31,75 +33,10 @@ By using this software, you agree to these terms and commit to using it in a man
 Users are expected to use this software responsibly and legally. If using a real person's face, obtain their consent and clearly label any output as a deepfake when sharing online. We are not responsible for end-user actions.
 
 
-## Quick Start - Pre-built (Windows / Nvidia)
+## Maual Installation (Windows)
 
-  <a href="https://hacksider.gumroad.com/l/vccdmm"> <img src="https://github.com/user-attachments/assets/7d993b32-e3e8-4cd3-bbfb-a549152ebdd5" width="285" height="77" />
-
-##### This is the fastest build you can get if you have a discrete NVIDIA GPU.
-
-## Quick Start - Pre-built (Mac / Silicon)
-    
-  <a href="https://krshh.gumroad.com/l/Deep-Live-Cam-Mac"> <img src="https://github.com/user-attachments/assets/d5d913b5-a7de-4609-96b9-979a5749a703" width="285" height="77" />
- 
-###### These Pre-builts are perfect for non-technical users or those who don’t have time to, or can't manually install all the requirements. Just a heads-up: this is an open-source project, so you can also install it manually.
-
-## TLDR; Live Deepfake in just 3 Clicks
-![easysteps](https://github.com/user-attachments/assets/af825228-852c-411b-b787-ffd9aac72fc6)
-1. Select a face
-2. Select which camera to use
-3. Press live!
-
-## Features & Uses - Everything is real-time
-
-### Mouth Mask
-
-**Retain your original mouth for accurate movement using Mouth Mask**
-
-<p align="center">
-  <img src="media/ludwig.gif" alt="resizable-gif">
-</p>
-
-### Face Mapping
-
-**Use different faces on multiple subjects simultaneously**
-
-<p align="center">
-  <img src="media/streamers.gif" alt="face_mapping_source">
-</p>
-
-### Your Movie, Your Face
-
-**Watch movies with any face in real-time**
-
-<p align="center">
-  <img src="media/movie.gif" alt="movie">
-</p>
-
-### Live Show
-
-**Run Live shows and performances**
-
-<p align="center">
-  <img src="media/live_show.gif" alt="show">
-</p>
-
-### Memes
-
-**Create Your most viral meme yet**
-
-<p align="center">
-  <img src="media/meme.gif" alt="show" width="450"> 
-  <br>
-  <sub>Created using Many Faces feature in Deep-Live-Cam</sub>
-</p>
-
-
-## Installation (Manual)
 
 **Please be aware that the installation requires technical skills and is not for beginners. Consider downloading the prebuilt version.**
-
-<details>
-<summary>Click to see the process</summary>
 
 ### Installation
 
@@ -140,7 +77,7 @@ pip install -r requirements.txt
 
 **CUDA Execution Provider (Nvidia)**
 
-1. Install [CUDA Toolkit 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive) or [CUDA Toolkit 12.1.1](https://developer.nvidia.com/cuda-12-1-1-download-archive)
+1. Install For [CUDA Toolkit 12.1.1](https://developer.nvidia.com/cuda-12-1-1-download-archive)
 2. Install dependencies:
 
 ```bash
@@ -203,6 +140,53 @@ python run.py --execution-provider openvino
 -   Wait for the preview to appear (10-30 seconds).
 -   Use a screen capture tool like OBS to stream.
 -   To change the face, select a new source image.
+
+
+## Features & Uses - Everything is real-time
+
+### Mouth Mask
+
+**Retain your original mouth for accurate movement using Mouth Mask**
+
+<p align="center">
+  <img src="media/ludwig.gif" alt="resizable-gif">
+</p>
+
+### Face Mapping
+
+**Use different faces on multiple subjects simultaneously**
+
+<p align="center">
+  <img src="media/streamers.gif" alt="face_mapping_source">
+</p>
+
+### Your Movie, Your Face
+
+**Watch movies with any face in real-time**
+
+<p align="center">
+  <img src="media/movie.gif" alt="movie">
+</p>
+
+### Live Show
+
+**Run Live shows and performances**
+
+<p align="center">
+  <img src="media/live_show.gif" alt="show">
+</p>
+
+### Memes
+
+**Create Your most viral meme yet**
+
+<p align="center">
+  <img src="media/meme.gif" alt="show" width="450"> 
+  <br>
+  <sub>Created using Many Faces feature in Deep-Live-Cam</sub>
+</p>
+
+
 
 ## Command Line Arguments (Unmaintained)
 
