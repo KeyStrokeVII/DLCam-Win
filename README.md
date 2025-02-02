@@ -101,9 +101,7 @@ pip install onnxruntime-gpu==1.16.3
 python run.py --execution-provider cuda
 ```
 
-## Running the Application with Conda
-
-To run the application using a batch file, follow these steps:
+## To run the application using a batch file, follow these steps
 
 ### Prerequisites
 
