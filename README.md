@@ -91,55 +91,7 @@ pip install onnxruntime-gpu==1.16.3
 python run.py --execution-provider cuda
 ```
 
-**DirectML Execution Provider (Windows)**
 
-1. Install dependencies:
-
-```bash
-pip uninstall onnxruntime onnxruntime-directml
-pip install onnxruntime-directml==1.15.1
-```
-
-2. Usage:
-
-```bash
-python run.py --execution-provider directml
-```
-
-**OpenVINO™ Execution Provider (Intel)**
-
-1. Install dependencies:
-
-```bash
-pip uninstall onnxruntime onnxruntime-openvino
-pip install onnxruntime-openvino==1.15.0
-```
-
-2. Usage:
-
-```bash
-python run.py --execution-provider openvino
-```
-
-</details>
-
-## Usage
-
-**1. Image/Video Mode**
-
--   Execute `python run.py`.
--   Choose a source face image and a target image/video.
--   Click "Start".
--   The output will be saved in a directory named after the target video.
-
-**2. Webcam Mode**
-
--   Execute `python run.py`.
--   Select a source face image.
--   Click "Live".
--   Wait for the preview to appear (10-30 seconds).
--   Use a screen capture tool like OBS to stream.
--   To change the face, select a new source image.
 
 
 ## Features & Uses - Everything is real-time
