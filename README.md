@@ -35,13 +35,12 @@ Users are expected to use this software responsibly and legally. If using a real
 
 ---
 
-Certainly! Here's the updated section without that part:
+# Manual Installation for Windows with GPU ONLY!!!
 
 ---
 
-# Manual Installation for Windows with GPU ONLY!!!
 
-Please be aware that the installation requires technical skills and is not for beginners. Consider downloading the prebuilt version.
+Please be aware that the installation requires technical skills and is not for beginners. Consider downloading the [prebuilt](https://hacksider.gumroad.com/l/vccdmm) version.
 
 ## Installation
 
@@ -109,7 +108,7 @@ python run.py --execution-provider cuda
 
 ### Batch File Setup
 
-Edit a batch file (e.g., `run-cuda.bat`) with the following content:
+Edit a batch file (`run-cuda.bat`) with the following content:
 
 ```batch
 @echo off
